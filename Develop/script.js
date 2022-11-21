@@ -1,15 +1,43 @@
-//display current date
-
 //create time blocks for standard business hours
 
 //create a function that color codes past, present and future
-// - will need to be connected to dayjs to know what hour it is and change dynamically
+// - connected to dayjs to know what hour it is and change dynamically
+// - how do we know what hour it is?
+// - how do we create past/future var?
 
 //save events in local storage
 
+var hr9 = document.getElementById('hour-9');
+var hr10 = document.getElementById('hour-10');
+var hr11 = document.getElementById('hour-11');
+var hr12 = document.getElementById('hour-12');
+var hr1 = document.getElementById('hour-1');
+var hr2 = document.getElementById('hour-2');
+var hr3 = document.getElementById('hour-3');
+var hr4 = document.getElementById('hour-4');
+var hr5 = document.getElementById('hour-5');
 
-var dayJsObject = dayjs();
+var hr9 = dayjs().hour(9);
+var hr10 = dayjs().hour(10);
+var hr11 = dayjs().hour(11);
+var hr12 = dayjs().hour(12);
+var hr1 = dayjs().hour(13);
+var hr2 = dayjs().hour(14);
+var hr3 = dayjs().hour(15);
+var hr4 = dayjs().hour(16);
+var hr5 = dayjs().hour(17);
 
+console.log(hr1)
+
+var today = dayjs();
+$('#currentDay').text(today.format('dddd MMM D, YYYY'));
+console.log(today);
+
+var currentHour = dayjs().hour()
+console.log(currentHour)
+
+var hoursArray = [hr9, hr10, hr11, hr12, hr1, hr2, hr3, hr4, hr5,];
+console.log(hoursArray)
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
