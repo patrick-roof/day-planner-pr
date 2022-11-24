@@ -1,5 +1,4 @@
-//TO DO:
-//save events in local storage
+var saveBtn = document.querySelector('#saveBtn')
 
 var hr9El = document.getElementById('hour-9');
 var hr10El = document.getElementById('hour-10');
@@ -27,7 +26,7 @@ var today = dayjs()
 $('#currentDay').text(today.format('dddd MMM D, YYYY'));
 console.log(today);
 
-var currentHour = dayjs().hour(14).hour();
+var currentHour = dayjs().hour();
 console.log(currentHour)
 
 var hoursArray = [hr9, hr10, hr11, hr12, hr1, hr2, hr3, hr4, hr5,];
@@ -38,30 +37,12 @@ var hoursEl = [hr9El, hr10El, hr11El, hr12El, hr1El, hr2El, hr3El, hr4El, hr5El,
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 $(function () {
-  // TODO: Add a listener for click events on the save button. This code should
-  // use the id in the containing time-block as a key to save the user input in
-  // local storage. HINT: What does `this` reference in the click listener
-  // function? How can DOM traversal be used to get the "hour-x" id of the
-  // time-block containing the button that was clicked? How might the id be
-  // useful when saving the description in local storage?
-  //
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-  //
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-  //
-  // TODO: Add code to display the current date in the header of the page.
+
 });
 
 for (var i = 0; i < hoursArray.length; i ++) {
   console.log(hoursArray[i]);
   if (hoursArray[i] < currentHour) {
-    //inside of here, change class element
     hoursEl[i].classList.add('past');
     hoursEl[i].classList.remove('present');
     hoursEl[i].classList.remove('future');
@@ -77,3 +58,24 @@ for (var i = 0; i < hoursArray.length; i ++) {
     hoursEl[i].classList.remove('future');
   }
 }
+
+var userInput = document.querySelector('textarea')
+//
+$('.saveBtn').on('click', function() {
+  var text = $(this).siblings('.description').val();
+  var events = $(this).parents().attr('id');
+  console.log(events);
+  localStorage.setItem(events, text)
+  console.log(text)
+  console.log(this)
+})
+
+$('#hour-9').children('.description').val(localStorage.getItem('hour-9'))
+$('#hour-10').children('.description').val(localStorage.getItem('hour-10'))
+$('#hour-11').children('.description').val(localStorage.getItem('hour-11'))
+$('#hour-12').children('.description').val(localStorage.getItem('hour-12'))
+$('#hour-1').children('.description').val(localStorage.getItem('hour-1'))
+$('#hour-2').children('.description').val(localStorage.getItem('hour-2'))
+$('#hour-3').children('.description').val(localStorage.getItem('hour-3'))
+$('#hour-4').children('.description').val(localStorage.getItem('hour-4'))
+$('#hour-5').children('.description').val(localStorage.getItem('hour-5'))
